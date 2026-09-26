@@ -973,6 +973,8 @@
 
 ## OnePlus Ace 3V
 
+<img align="right" src="Resources/Pictures/OnePlus-Ace-3V.png" width="400" alt="Preview">
+
 **State:** Active <br>
 **Codename:** audi
 
