@@ -969,6 +969,32 @@
 </table>
 
 <details>
+<summary><b><strong>OnePlus Devices</strong></b></summary>
+
+## OnePlus Ace 3V
+
+**State:** Active <br>
+**Codename:** audi
+
+**Contributors:** [KSN](https://github.com/KSN2redawew/)
+
+### UEFI Status
+
+| Feature            | Description | State |
+|:-------------------|:------------|:-----:|
+| Display            |             | ✅    |
+| Internal Storage   |             | ✅    |
+| Side Buttons       |             | ✅    |
+| USB Host Mode      |             | ❌    |
+| USB Device Mode    |             | ✅    |
+| USB Power Delivery |             | ❌    |
+| Mass Storage       |             | ✅    |
+| Windows Boot       |             | ❌    |
+| Linux Boot         |             | ❌    |
+
+</details>
+
+<details>
 <summary><b><strong>Realme Devices</strong></b></summary>
 
 ## Realme GT Neo6
