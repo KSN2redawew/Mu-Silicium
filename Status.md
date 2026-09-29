@@ -1981,6 +1981,29 @@
 | Windows Boot       |             | ❌    |
 | Linux Boot         |             | ❔    |
 
+<br>
+
+## Xiaomi Redmi Pad Pro
+
+**State:** Active <br>
+**Codename:** dizi
+
+**Contributors:** [KSN](https://github.com/KSN2redawew)
+
+### UEFI Status
+
+| Feature            | Description | State |
+|:-------------------|:------------|:-----:|
+| Display            |             | ✅    |
+| Internal Storage   |             | ✅    |
+| Side Buttons       |             | ✅    |
+| USB Host Mode      |             | ❌    |
+| USB Device Mode    |             | ✅    |
+| USB Power Delivery |             | ❌    |
+| Mass Storage       |             | ✅    |
+| Windows Boot       |             | ❌    |
+| Linux Boot         |             | ❔    |
+
 </details>
 
 ---
