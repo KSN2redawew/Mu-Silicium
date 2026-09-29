@@ -1995,8 +1995,8 @@
 | Feature            | Description | State |
 |:-------------------|:------------|:-----:|
 | Display            |             | ✅    |
-| Internal Storage   |             | ✅    |
-| Side Buttons       |             | ✅    |
+| Internal Storage   |             | ❔    |
+| Side Buttons       |             | ❌    |
 | USB Host Mode      |             | ❌    |
 | USB Device Mode    |             | ✅    |
 | USB Power Delivery |             | ❌    |
