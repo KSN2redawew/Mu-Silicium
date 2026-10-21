@@ -35,6 +35,12 @@ def check(root: Path, *, require_binary: bool = False) -> dict:
         raise ValueError("DIZI console input still deferred to USB-only path")
     if dxe.count('INF Binaries/dizi/QcomPkg/Drivers/ButtonsDxe/ButtonsDxe.inf') != 1:
         raise ValueError("DIZI Qualcomm ButtonsDxe missing or included twice")
+    if 'DeviceBootManagerLib|diziPkg/Library/DiziDeviceBootManagerLib/DiziDeviceBootManagerLib.inf' not in dsc:
+        raise ValueError("DIZI BDS is not bound to the input-enumeration library")
+    bds_path = root / 'Platforms/Xiaomi/diziPkg/Library/DiziDeviceBootManagerLib/DiziBootManager.c'
+    bds = bds_path.read_text()
+    if 'EfiBootManagerUpdateConsoleVariable (ConIn, Path, NULL)' not in bds:
+        raise ValueError("DIZI BDS does not append existing button handles to ConIn")
     if require_binary and not inf_path.is_file():
         raise ValueError("Binaries submodule is absent: cannot verify actual ButtonsDxe image")
     chosen = None
@@ -53,6 +59,8 @@ def check(root: Path, *, require_binary: bool = False) -> dict:
         "binary_origin": "Redmi Note 13 Pro 5G firmware; button mappings may differ",
         "buttons_dxe": chosen or "external Binaries submodule not checked",
         "conin_eager_connect": True,
+        "conin_driver_binding": "DiziDeviceBootManagerLib",
+        "button_protocol_runtime_verified": False,
         "usb_host_mode_verified": False,
         "usb_power_delivery_verified": False,
         "internal_storage_verified": False,
