@@ -86,6 +86,11 @@
   #
   ConfigurationMapLib|diziPkg/Library/ConfigurationMapLib/ConfigurationMapLib.inf
 
+  #
+  # DIZI-only console input discovery, leaving shared Qualcomm sources alone.
+  #
+  DeviceBootManagerLib|diziPkg/Library/DiziDeviceBootManagerLib/DiziDeviceBootManagerLib.inf
+
 [Components]
   #
   # ACPI Tables
