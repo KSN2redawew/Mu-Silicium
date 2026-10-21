@@ -30,8 +30,10 @@ matrix. The original upstream status is available in Git history.
   documented patch changes the Qualcomm Power scan code to Enter. This does
   **not** prove Power or Volume inputs work on the Redmi Pad Pro.
 - A DIZI-specific `PcdConInConnectOnDemand=FALSE` experiment makes the
-  console connection eager, rather than using a USB-only on-demand path.
-  Physical input still needs validation.
+  console connection eager rather than using a USB-only on-demand path.
+- The DIZI-specific `DiziDeviceBootManagerLib` attempts to append existing
+  Qualcomm `SimpleTextIn`/`SimpleTextInEx` button handles to UEFI `ConIn`.
+  It does **not** poll PMIC hardware; physical input still needs validation.
 
 `python3 tools/dizi_buttons_preflight.py` checks DTS and build dependencies.
 It does not probe or write PMIC registers.
