@@ -90,12 +90,13 @@ APRIORI DXE {
   INF Binaries/dizi/QcomPkg/Drivers/UsbDeviceDxe/UsbDeviceDxe.inf
   INF Binaries/dizi/QcomPkg/Drivers/UsbConfigDxe/UsbConfigDxe.inf
   INF Binaries/dizi/QcomPkg/Drivers/UsbInitDxe/UsbInitDxe.inf
+  # PM6450 Volume Up is GPIO-controlled: initialize GpiDxe first.
+  INF Binaries/dizi/QcomPkg/Drivers/GpiDxe/GpiDxe.inf
   INF Binaries/dizi/QcomPkg/Drivers/ButtonsDxe/ButtonsDxe.inf
   INF Binaries/dizi/QcomPkg/Drivers/TsensDxe/TsensDxe.inf
 !if $(USE_CUSTOM_DISPLAY_DRIVER) == 1
   INF Binaries/dizi/QcomPkg/Drivers/CPRDxe/CPRDxe.inf
 !endif
-  INF Binaries/dizi/QcomPkg/Drivers/GpiDxe/GpiDxe.inf
   INF Binaries/dizi/QcomPkg/Drivers/UCDxe/UCDxe.inf
   INF Binaries/dizi/QcomPkg/Drivers/RNGDxe/RngDxe.inf
 
