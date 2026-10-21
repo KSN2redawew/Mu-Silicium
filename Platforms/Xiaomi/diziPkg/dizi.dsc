@@ -62,6 +62,15 @@
   gSiliciumPkgTokenSpaceGuid.PcdFrameBufferColorDepth|32
 
   #
+  # Console input
+  #
+  # Explicit DIZI-only experiment: enumerate console input at boot instead of
+  # deferring it to the USB-only OnDemandConInConnect hook. The shipped
+  # ButtonsDxe is a Qualcomm binary and still needs an on-device test; this
+  # setting cannot make the PM6450/PMK8350 electrical inputs work by itself.
+  gEfiMdeModulePkgTokenSpaceGuid.PcdConInConnectOnDemand|FALSE
+
+  #
   # Platform PEI
   #
   gQcomPkgTokenSpaceGuid.PcdPlatformType|"LA"
