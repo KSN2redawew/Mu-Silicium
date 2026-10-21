@@ -1,39 +1,61 @@
-name: Build UEFI for active devices
+name: DIZI UEFI diagnostic build
+# Manual and same-repository PR only: NEVER auto-release unverified firmware.
 on:
-  push:
-    branches: ["main"]
-    paths:
-      - 'Binaries'
-      - 'Common/**'
-      - 'Mu_Basecore'
-      - 'MuPatches/**'
-      - 'Platforms/**'
-      - 'Silicon/**'
-      - 'Silicium-ACPI'
   workflow_dispatch:
   pull_request:
-    types: [opened, reopened]
     paths:
-      - 'Binaries'
-      - 'Common/**'
-      - 'Mu_Basecore'
-      - 'MuPatches/**'
-      - 'Platforms/**'
-      - 'Silicon/**'
-      - 'Silicium-ACPI'
-env:
-  CI_BUILD: true
+      - "Platforms/Xiaomi/diziPkg/**"
+      - "Resources/Configs/dizi.toml"
+      - "Resources/DTBs/dizi.dts"
+      - "Silicon/Qualcomm/QcomPkg/Library/PlatformBootManagerLib/**"
+      - "tools/dizi_buttons_preflight.py"
+      - "tests/test_dizi_buttons_preflight.py"
+      - ".github/workflows/active_devices.yml"
+      - "build_uefi.py"
+permissions:
+  contents: read
+concurrency:
+  group: dizi-uefi-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
-  build:
+  preflight:
     runs-on: ubuntu-24.04
+    timeout-minutes: 8
     steps:
-      - uses: actions/checkout@v7
-      - name: Build UEFI for active devices
-        run: bash ./setup_env.sh -p apt && bash ./build_active_devices.sh -r DEBUG
-
-      - name: Upload UEFI images
-        uses: actions/upload-artifact@v7
+      - uses: actions/checkout@v4
+      - name: Run DIZI button-wiring tests without firmware access
+        run: |
+          python3 -m py_compile tools/dizi_buttons_preflight.py
+          python3 -m unittest discover -s tests -p 'test_dizi_buttons_preflight.py' -v
+          python3 tools/dizi_buttons_preflight.py --json-out dizi-buttons-static.json
+      - uses: actions/upload-artifact@v4
         with:
-          name: uefi-images
-          path: ./Mu-*
-          compression-level: 9
+          name: dizi-buttons-static-report
+          path: dizi-buttons-static.json
+          retention-days: 14
+
+  build-dizi:
+    needs: preflight
+    # Firmware binaries/submodule must be treated as device-matched, not
+    # as proof any physical key or USB PD function actually works.
+    runs-on: ubuntu-24.04
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install DIZI toolchain and pinned submodules
+        run: bash ./setup_env.sh -p apt
+      - name: Verify selected patched ButtonsDxe binary
+        run: |
+          python3 tools/dizi_buttons_preflight.py --require-binary \
+            --json-out dizi-buttons-with-binary.json
+      - name: Build only dizi (DEBUG)
+        run: python3 build_uefi.py -d dizi -r DEBUG -c
+      - name: Upload experimental UEFI image
+        uses: actions/upload-artifact@v4
+        with:
+          name: dizi-UEFI-INPUT-EXPERIMENTAL-NOT-RELEASE
+          path: |
+            Mu-dizi*.img
+            dizi-buttons-with-binary.json
+          if-no-files-found: error
+          retention-days: 14
