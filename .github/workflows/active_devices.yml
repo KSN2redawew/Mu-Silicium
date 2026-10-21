@@ -40,8 +40,13 @@ jobs:
     # as proof any physical key or USB PD function actually works.
     runs-on: ubuntu-24.04
     timeout-minutes: 120
+    env:
+      # Avoid a runner-wide apt full-upgrade in setup_env.sh.
+      CI_BUILD: "false"
     steps:
       - uses: actions/checkout@v4
+        with:
+          submodules: recursive
       - name: Install DIZI toolchain and pinned submodules
         run: bash ./setup_env.sh -p apt
       - name: Verify selected patched ButtonsDxe binary
