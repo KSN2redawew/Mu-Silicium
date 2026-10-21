@@ -61,7 +61,6 @@
 !if $(USE_CUSTOM_DISPLAY_DRIVER) == 1
   INF Binaries/dizi/QcomPkg/Drivers/CPRDxe/CPRDxe.inf
 !endif
-  INF Binaries/dizi/QcomPkg/Drivers/GpiDxe/GpiDxe.inf
   INF Binaries/dizi/QcomPkg/Drivers/SPIDxe/SPIDxe.inf
   INF Binaries/dizi/QcomPkg/Drivers/SdccDxe/SdccDxe.inf
   INF Binaries/dizi/QcomPkg/Drivers/FeatureEnablerDxe/FeatureEnablerDxe.inf
@@ -72,6 +71,8 @@
   INF SiliciumPkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
 !endif
 
+  # PM6450 Volume Up is GPIO-controlled: initialize GpiDxe first.
+  INF Binaries/dizi/QcomPkg/Drivers/GpiDxe/GpiDxe.inf
   INF Binaries/dizi/QcomPkg/Drivers/ButtonsDxe/ButtonsDxe.inf
   INF Binaries/dizi/QcomPkg/Drivers/ChargerExDxe/ChargerExDxe.inf
   INF Binaries/dizi/QcomPkg/Drivers/PmicGlinkDxe/PmicGlinkDxe.inf
