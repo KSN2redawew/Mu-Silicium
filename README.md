@@ -22,6 +22,9 @@ Or use **Actions → DIZI UEFI diagnostic build → Run workflow**.
 The new build evaluates DIZI's key mapping:
 - Volume Up uses **PM6450 SPMI GPIO1**, active low.
 - Power and resin use **PMK8350 PON/SPMI**.
+- A DIZI-only BDS library now attempts to register already-existing EFI key
+  protocol handles in `ConIn` before the boot menu. This is an experimental
+  console discovery fix, not a replacement PMIC button driver.
 - Firmware binaries are **not** guaranteed to have Redmi Pad Pro-specific
   key mappings. The preflight is static, not hardware confirmation.
 
