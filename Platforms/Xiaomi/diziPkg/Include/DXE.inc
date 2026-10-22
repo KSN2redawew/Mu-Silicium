@@ -73,6 +73,10 @@
 
   # PM6450 Volume Up is GPIO-controlled: initialize GpiDxe first.
   # PM6450/PMK8350 key services must precede ButtonsDxe.
+  # DIZI PMIC input providers: required by ButtonsDxe's PmicGPIO/PON interfaces.
+  # Previous firmware omitted BOTH SPMI and PmicDxe, leaving keys dead.
+  INF Binaries/dizi/QcomPkg/Drivers/SPMIDxe/SPMIDxe.inf
+  INF Binaries/dizi/QcomPkg/Drivers/PmicDxe/PmicDxeLa.inf
   INF Binaries/dizi/QcomPkg/Drivers/PmicGlinkDxe/PmicGlinkDxe.inf
   INF Binaries/dizi/QcomPkg/Drivers/GpiDxe/GpiDxe.inf
   INF Binaries/dizi/QcomPkg/Drivers/ButtonsDxe/ButtonsDxe.inf
