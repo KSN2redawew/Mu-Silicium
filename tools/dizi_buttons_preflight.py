@@ -58,15 +58,10 @@ def check(root: Path, *, require_binary: bool = False) -> dict:
             if spmi in source or pmic_core in source:
                 raise ValueError("Regression: PmicDxe/SPMIDxe forced into APRIORI before display")
         else:
-            if any(source.count(name) != 1 for name in (spmi, pmic_core)):
-                raise ValueError("Normal DXE must retain exactly one SPMI and PMIC provider")
-            if source.index(spmi) > source.index(pmic_core):
-                raise ValueError("SPMI must appear before PmicDxe in normal DXE")
-    if require_binary:
-        for name in ("SPMIDxe/SPMIDxe.inf", "PmicDxe/PmicDxeLa.inf"):
-            p = root / "Binaries/dizi/QcomPkg/Drivers" / name
-            if not p.is_file():
-                raise ValueError("Missing PMIC provider firmware " + name)
+            if spmi in source or pmic_core in source:
+                raise ValueError("Black-screen regression: SPMI/PmicDxe returned in normal DXE")
+    # The binary modules may exist in the source submodule, but must not
+    # be present in the screen-recovery firmware volume.
     if require_binary and not inf_path.is_file():
         raise ValueError("Binaries submodule is absent: cannot verify actual ButtonsDxe image")
     chosen = None
@@ -84,7 +79,7 @@ def check(root: Path, *, require_binary: bool = False) -> dict:
         "volume_down_or_resin": {"controller": "PMK8350 PON/SPMI", "uefi_runtime_verified": False},
         "binary_origin": "Redmi Note 13 Pro 5G firmware; button mappings may differ",
         "buttons_dxe": chosen or "external Binaries submodule not checked",
-        "driver_init_order": "SPMI/PmicDxe excluded from APRIORI, retained in normal DXE after early display",
+        "driver_init_order": "SPMI/PmicDxe excluded from APRIORI and normal DXE (screen recovery)",
         "conin_eager_connect": True,
         "conin_driver_binding": "DiziDeviceBootManagerLib",
         "button_protocol_runtime_verified": False,
