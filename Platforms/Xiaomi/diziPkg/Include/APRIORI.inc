@@ -74,10 +74,9 @@ APRIORI DXE {
   INF MdeModulePkg/Universal/BdsDxe/BdsDxe.inf
 
   INF Binaries/dizi/QcomPkg/Drivers/SPIDxe/SPIDxe.inf
-  # DIZI PMIC input providers: required by ButtonsDxe's PmicGPIO/PON interfaces.
-  # Previous firmware omitted BOTH SPMI and PmicDxe, leaving keys dead.
-  INF Binaries/dizi/QcomPkg/Drivers/SPMIDxe/SPMIDxe.inf
-  INF Binaries/dizi/QcomPkg/Drivers/PmicDxe/PmicDxeLa.inf
+  # SAFETY: do not force SPMIDxe/PmicDxeLa via APRIORI.
+  # They are included in normal DXE only for isolated display-regression test.
+  # Power/GPIO services may touch PMIC regulators before display is ready.
   INF Binaries/dizi/QcomPkg/Drivers/PmicGlinkDxe/PmicGlinkDxe.inf
   INF Binaries/dizi/QcomPkg/Drivers/UsbPwrCtrlDxe/UsbPwrCtrlDxe.inf
   INF Binaries/dizi/QcomPkg/Drivers/QcomChargerDxe/QcomChargerDxeLA.inf
