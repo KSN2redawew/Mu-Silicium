@@ -46,11 +46,20 @@ def check(root: Path, *, require_binary: bool = False) -> dict:
         gpio = 'INF Binaries/dizi/QcomPkg/Drivers/GpiDxe/GpiDxe.inf'
         buttons = 'INF Binaries/dizi/QcomPkg/Drivers/ButtonsDxe/ButtonsDxe.inf'
         pmic = 'INF Binaries/dizi/QcomPkg/Drivers/PmicGlinkDxe/PmicGlinkDxe.inf'
-        if source.count(gpio) != 1 or source.count(buttons) != 1 or source.count(pmic) != 1:
-            raise ValueError(f"{label} has missing/duplicate GPIO/PMIC/buttons driver")
-        if not (source.index(pmic) < source.index(buttons)
+        spmi = 'INF Binaries/dizi/QcomPkg/Drivers/SPMIDxe/SPMIDxe.inf'
+        pmic_core = 'INF Binaries/dizi/QcomPkg/Drivers/PmicDxe/PmicDxeLa.inf'
+        providers = (spmi, pmic_core, pmic, gpio, buttons)
+        if any(source.count(name) != 1 for name in providers):
+            raise ValueError(f"{label} missing/duplicate SPMI/PmicDxe/GLink/GPIO/Buttons driver")
+        if not (source.index(spmi) < source.index(pmic_core) < source.index(buttons)
+                and source.index(pmic) < source.index(buttons)
                 and source.index(gpio) < source.index(buttons)):
-            raise ValueError(f"{label} initializes ButtonsDxe before its PMIC/GPIO dependencies")
+            raise ValueError(f"{label}: ButtonsDxe starts before SPMI or PMIC GPIO/PON providers")
+    if require_binary:
+        for name in ("SPMIDxe/SPMIDxe.inf", "PmicDxe/PmicDxeLa.inf"):
+            p = root / "Binaries/dizi/QcomPkg/Drivers" / name
+            if not p.is_file():
+                raise ValueError("Missing PMIC provider firmware " + name)
     if require_binary and not inf_path.is_file():
         raise ValueError("Binaries submodule is absent: cannot verify actual ButtonsDxe image")
     chosen = None
@@ -68,7 +77,7 @@ def check(root: Path, *, require_binary: bool = False) -> dict:
         "volume_down_or_resin": {"controller": "PMK8350 PON/SPMI", "uefi_runtime_verified": False},
         "binary_origin": "Redmi Note 13 Pro 5G firmware; button mappings may differ",
         "buttons_dxe": chosen or "external Binaries submodule not checked",
-        "driver_init_order": "PmicGlinkDxe and GpiDxe before ButtonsDxe",
+        "driver_init_order": "SPMIDxe, PmicDxe, PmicGlinkDxe and GpiDxe before ButtonsDxe",
         "conin_eager_connect": True,
         "conin_driver_binding": "DiziDeviceBootManagerLib",
         "button_protocol_runtime_verified": False,
