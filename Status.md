@@ -47,3 +47,13 @@ of Android boot. USB host/PD, UFS root and Linux remain separate investigations.
 Only test an experimental image with an already verified **temporary boot**
 method and working stock recovery path. Do not flash to `boot_a`,
 `boot_b`, `vendor_boot`, `userdata`, or repartition UFS.
+
+## Black-screen regression (22 October 2026)
+
+The variant with `SPMIDxe` and `PmicDxeLa` added to **APRIORI DXE**
+compiled and verified but caused an all-black display, no OTG, and no
+button events on the real tablet. Firmware presence in FV is NOT evidence
+that PMIC initialization succeeded. This experiment removes both modules
+from APRIORI (retains them in normal DXE) to test whether the regression is
+an early-dispatch ordering/power issue. It remains unvalidated. If black
+again, use the earlier display-working boot image, not a permanent flash.
