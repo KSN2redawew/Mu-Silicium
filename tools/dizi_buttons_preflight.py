@@ -48,13 +48,20 @@ def check(root: Path, *, require_binary: bool = False) -> dict:
         pmic = 'INF Binaries/dizi/QcomPkg/Drivers/PmicGlinkDxe/PmicGlinkDxe.inf'
         spmi = 'INF Binaries/dizi/QcomPkg/Drivers/SPMIDxe/SPMIDxe.inf'
         pmic_core = 'INF Binaries/dizi/QcomPkg/Drivers/PmicDxe/PmicDxeLa.inf'
-        providers = (spmi, pmic_core, pmic, gpio, buttons)
+        providers = (pmic, gpio, buttons)
         if any(source.count(name) != 1 for name in providers):
-            raise ValueError(f"{label} missing/duplicate SPMI/PmicDxe/GLink/GPIO/Buttons driver")
-        if not (source.index(spmi) < source.index(pmic_core) < source.index(buttons)
-                and source.index(pmic) < source.index(buttons)
+            raise ValueError(f"{label} missing/duplicate GLink/GPIO/Buttons driver")
+        if not (source.index(pmic) < source.index(buttons)
                 and source.index(gpio) < source.index(buttons)):
-            raise ValueError(f"{label}: ButtonsDxe starts before SPMI or PMIC GPIO/PON providers")
+            raise ValueError(f"{label}: ButtonsDxe starts before GPIO/GLink services")
+        if label == "APRIORI":
+            if spmi in source or pmic_core in source:
+                raise ValueError("Regression: PmicDxe/SPMIDxe forced into APRIORI before display")
+        else:
+            if any(source.count(name) != 1 for name in (spmi, pmic_core)):
+                raise ValueError("Normal DXE must retain exactly one SPMI and PMIC provider")
+            if source.index(spmi) > source.index(pmic_core):
+                raise ValueError("SPMI must appear before PmicDxe in normal DXE")
     if require_binary:
         for name in ("SPMIDxe/SPMIDxe.inf", "PmicDxe/PmicDxeLa.inf"):
             p = root / "Binaries/dizi/QcomPkg/Drivers" / name
@@ -77,7 +84,7 @@ def check(root: Path, *, require_binary: bool = False) -> dict:
         "volume_down_or_resin": {"controller": "PMK8350 PON/SPMI", "uefi_runtime_verified": False},
         "binary_origin": "Redmi Note 13 Pro 5G firmware; button mappings may differ",
         "buttons_dxe": chosen or "external Binaries submodule not checked",
-        "driver_init_order": "SPMIDxe, PmicDxe, PmicGlinkDxe and GpiDxe before ButtonsDxe",
+        "driver_init_order": "SPMI/PmicDxe excluded from APRIORI, retained in normal DXE after early display",
         "conin_eager_connect": True,
         "conin_driver_binding": "DiziDeviceBootManagerLib",
         "button_protocol_runtime_verified": False,
