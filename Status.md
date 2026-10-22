@@ -57,3 +57,7 @@ that PMIC initialization succeeded. This experiment removes both modules
 from APRIORI (retains them in normal DXE) to test whether the regression is
 an early-dispatch ordering/power issue. It remains unvalidated. If black
 again, use the earlier display-working boot image, not a permanent flash.
+
+## Safe display regression isolation — 22 October 2026
+
+Hardware testing found **black screen** both when `SPMIDxe` and `PmicDxeLa` were in APRIORI and when they were deferred into ordinary DXE. This controlled recovery candidate omits both vendor binaries from firmware entirely. `ButtonsDxe` remains included, but no physical-key support is promised: PMIC protocols may be missing. Restore visible firmware output first; then probe SPMI and PON with independent, device-specific instrumentation before loading another vendor PMIC driver. This variant is NOT validated on tablet and must not be flashed permanently.
