@@ -2649,6 +2649,28 @@
 </td></tr>
 </table>
 
+## Xiaomi Mi 11 Ultra
+
+<img align="right" src="Resources/Pictures/Xiaomi-Mi-11-Ultra.png" width="500" alt="Preview">
+
+**State:** Inactive <br>
+**Codename:** star
+
+**Contributors:** [KSN](https://github.com/KSN2redawew/)
+
+### UEFI Status
+
+| Feature            | Description                         | State |
+|:-------------------|:------------------------------------|:-----:|
+| Display            |                                     | ✅    |
+| Internal Storage   |                                     | ✅    |
+| Side Buttons       |                                     | ✅    |
+| USB Host Mode      |                                     | ❌    |
+| USB Device Mode    |                                     | ✅    |
+| USB Power Delivery |                                     | ❌    |
+| Mass Storage       | Unstable, Breaks on Large Transfers | ⚠️    |
+| Linux Boot         |                                     | ❌    |
+
 ## Xiaomi 11T Pro
 
 <img align="right" src="Resources/Pictures/Xiaomi-11T-Pro.png" width="500" alt="Preview">
