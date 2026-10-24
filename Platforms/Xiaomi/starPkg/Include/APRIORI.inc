@@ -17,6 +17,7 @@ APRIORI DXE {
   INF Binaries/star/QcomPkg/Drivers/HWIODxe/HWIODxe.inf
   INF Binaries/star/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
   INF Binaries/star/QcomPkg/Drivers/PlatformInfoDxe/PlatformInfoDxe.inf
+  INF Binaries/star/QcomPkg/Drivers/ProjectInfoDxe/ProjectInfoDxe.inf
   INF Binaries/star/QcomPkg/Drivers/HALIOMMUDxe/HALIOMMUDxe.inf
   INF Binaries/star/QcomPkg/Drivers/ULogDxe/ULogDxe.inf
   INF Binaries/star/QcomPkg/Drivers/CmdDbDxe/CmdDbDxe.inf
@@ -33,8 +34,8 @@ APRIORI DXE {
   INF Binaries/star/QcomPkg/Drivers/SPMIDxe/SPMIDxe.inf
   INF Binaries/star/QcomPkg/Drivers/PmicDxe/PmicDxeLa.inf
 
-  INF Binaries/star/MdeModulePkg/Universal/Disk/DiskIoDxe/DiskIoDxe.inf
-  INF Binaries/star/MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe.inf
+  INF MdeModulePkg/Universal/Disk/DiskIoDxe/DiskIoDxe.inf
+  INF MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe.inf
   INF MdeModulePkg/Universal/Disk/UnicodeCollation/EnglishDxe/EnglishDxe.inf
 
   INF Binaries/star/QcomPkg/Drivers/SdccDxe/SdccDxe.inf
@@ -76,7 +77,6 @@ APRIORI DXE {
 
   INF Binaries/star/QcomPkg/Drivers/SPIDxe/SPIDxe.inf
   INF Binaries/star/QcomPkg/Drivers/PmicGlinkDxe/PmicGlinkDxe.inf
-  INF Binaries/star/QcomPkg/Drivers/OcdtDxe/OppoProject.inf
   INF Binaries/star/QcomPkg/Drivers/UsbPwrCtrlDxe/UsbPwrCtrlDxe.inf
   INF Binaries/star/QcomPkg/Drivers/QcomChargerDxe/QcomChargerDxeLA.inf
   INF Binaries/star/QcomPkg/Drivers/ChargerExDxe/ChargerExDxe.inf

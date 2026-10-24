@@ -11,6 +11,9 @@
   INF PcBdsPkg/MsBootPolicy/MsBootPolicy.inf
   INF SiliciumPkg/Applications/UFPLoader/UFPLoader.inf
   INF SiliciumPkg/Applications/UFP/ufpdevicefw.inf
+  INF SiliciumPkg/Applications/IosLoader/IosLoader.inf
+
+
 
   #
   # RAW Files

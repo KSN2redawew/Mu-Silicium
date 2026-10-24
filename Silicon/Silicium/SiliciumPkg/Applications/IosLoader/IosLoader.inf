@@ -1,0 +1,36 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = IosLoader
+  FILE_GUID                      = 8B6A56E2-93D2-48F5-8C79-4B52C3D32B91
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 1.0
+  ENTRY_POINT                    = IosLoaderMain
+
+[Sources]
+  IosLoader.c
+  MachO.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  SiliciumPkg/SiliciumPkg.dec
+
+[LibraryClasses]
+  UefiApplicationEntryPoint
+  UefiBootServicesTableLib
+  UefiRuntimeServicesTableLib
+  UefiLib
+  BaseLib
+  BaseMemoryLib
+  MemoryAllocationLib
+  DebugLib
+  PrintLib
+
+[Protocols]
+  gEfiLoadedImageProtocolGuid
+  gEfiSimpleFileSystemProtocolGuid
+  gEfiGraphicsOutputProtocolGuid
+
+[Guids]
+  gEfiFileInfoGuid
+

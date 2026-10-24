@@ -26,13 +26,14 @@
 
   INF Binaries/star/QcomPkg/Drivers/ChipInfoDxe/ChipInfoDxe.inf
   INF Binaries/star/QcomPkg/Drivers/PlatformInfoDxe/PlatformInfoDxe.inf
+  INF Binaries/star/QcomPkg/Drivers/ProjectInfoDxe/ProjectInfoDxe.inf
   INF Binaries/star/QcomPkg/Drivers/DALSYSDxe/DALSYSDxe.inf
   INF Binaries/star/QcomPkg/Drivers/HALIOMMUDxe/HALIOMMUDxe.inf
   INF Binaries/star/QcomPkg/Drivers/HWIODxe/HWIODxe.inf
 
   INF MdeModulePkg/Universal/DevicePathDxe/DevicePathDxe.inf
-  INF Binaries/star/MdeModulePkg/Universal/Disk/DiskIoDxe/DiskIoDxe.inf
-  INF Binaries/star/MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe.inf
+  INF MdeModulePkg/Universal/Disk/DiskIoDxe/DiskIoDxe.inf
+  INF MdeModulePkg/Universal/Disk/PartitionDxe/PartitionDxe.inf
   INF FatPkg/EnhancedFatDxe/Fat.inf
   INF MdeModulePkg/Universal/Disk/UnicodeCollation/EnglishDxe/EnglishDxe.inf
 
@@ -76,7 +77,6 @@
   INF Binaries/star/QcomPkg/Drivers/IPCCDxe/IPCCDxe.inf
   INF Binaries/star/QcomPkg/Drivers/GLinkDxe/GLinkDxe.inf
   INF Binaries/star/QcomPkg/Drivers/PmicGlinkDxe/PmicGlinkDxe.inf
-  INF Binaries/star/QcomPkg/Drivers/OcdtDxe/OppoProject.inf
   INF Binaries/star/QcomPkg/Drivers/QcomChargerDxe/QcomChargerDxeLA.inf
   INF Binaries/star/QcomPkg/Drivers/UsbPwrCtrlDxe/UsbPwrCtrlDxe.inf
   INF Binaries/star/QcomPkg/Drivers/TsensDxe/TsensDxe.inf
@@ -95,6 +95,6 @@
   INF Binaries/star/QcomPkg/Drivers/UsbInitDxe/UsbInitDxe.inf
   INF Binaries/star/QcomPkg/Drivers/UCDxe/UCDxe.inf
   INF Binaries/star/QcomPkg/Drivers/RNGDxe/RngDxe.inf
-  INF Binaries/star/QcomPkg/Drivers/PILDxe/PILDxe.inf
+  #INF Binaries/star/QcomPkg/Drivers/PILDxe/PILDxe.inf
   INF Binaries/star/QcomPkg/Drivers/PILProxyDxe/PILProxyDxe.inf
   INF Binaries/star/QcomPkg/Drivers/SPSSDxe/SPSSDxe.inf

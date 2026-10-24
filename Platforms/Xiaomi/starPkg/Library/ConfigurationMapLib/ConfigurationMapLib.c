@@ -5,8 +5,7 @@ EFI_CONFIGURATION_ENTRY_DESCRIPTOR
 gConfigurationDescriptor[] = {
   // Configuration Map
   {"EnableShell", 0x1},
-  {"SecPagePoolCount", 0x1800},
-  {"InitialPagePoolCount", 0x1000},
+  {"InitialPagePoolCount", 0x700},
   {"SharedIMEMBaseAddr", 0x146BF000},
   {"DloadCookieAddr", 0x01FD3000},
   {"DloadCookieValue", 0x10},

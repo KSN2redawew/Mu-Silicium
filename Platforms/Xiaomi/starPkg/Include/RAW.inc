@@ -59,51 +59,6 @@
     SECTION RAW = Binaries/star/RawFiles/Panel_boe_amoled_fhd_dsc_cmd.xml
   }
 
-  FILE FREEFORM = DCF4F82B-B2BB-4FE3-A4AC-FD307AB82020 {
-    SECTION UI = "Panel-samsung_ana6706_dsc_cmd.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel-samsung_ana6706_dsc_cmd.xml
-  }
-
-  FILE FREEFORM = 713E456E-00DA-4D65-896E-C9BCE5CF3018 {
-    SECTION UI = "Panel-samsung_amb655x_dsc_cmd.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel-samsung_amb655x_dsc_cmd.xml
-  }
-
-  FILE FREEFORM = B3F96E4E-3E6C-4A71-9A8A-36368848C45E {
-    SECTION UI = "Panel_samsung_amb670yf01_dsc_cmd.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel_samsung_amb670yf01_dsc_cmd.xml
-  }
-
-  FILE FREEFORM = FF8D10AC-6C86-4B66-B13D-244DD8F6E1FC {
-    SECTION UI = "Panel_samsung_amb670yf01_id6_dsc_cmd.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel_samsung_amb670yf01_id6_dsc_cmd.xml
-  }
-
-  FILE FREEFORM = 76386745-42A2-4F12-8111-2B787F6DF4CE {
-    SECTION UI = "Panel_samsung_amb670yf01_id7_dsc_cmd.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel_samsung_amb670yf01_id7_dsc_cmd.xml
-  }
-
-  FILE FREEFORM = 562542C1-F65A-486E-BB30-901748412F4A {
-    SECTION UI = "Panel_samsung_amb670yf01_o_dsc_cmd.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel_samsung_amb670yf01_o_dsc_cmd.xml
-  }
-
-  FILE FREEFORM = 1793099A-C8C1-462A-8664-020A83C2FE73 {
-    SECTION UI = "Panel_samsung_sofef00_m_vid.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel_samsung_sofef00_m_vid.xml
-  }
-
-  FILE FREEFORM = FFCB17BD-DF4A-439F-9CF9-731B36F92BC5 {
-    SECTION UI = "Panel-samsung_ams662zs01_dsc_cmd.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel-samsung_ams662zs01_dsc_cmd.xml
-  }
-
-  FILE FREEFORM = FFCB17BD-DF4A-439F-9CF9-731B36F92AB6 {
-    SECTION UI = "Panel-samsung_ams662zs01_dvt_dsc_cmd.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel-samsung_ams662zs01_dvt_dsc_cmd.xml
-  }
-
   FILE FREEFORM = 8F276EE4-E75E-4C3B-8BCC-C37771E26478 {
     SECTION UI = "Panel_nt36860_wqhd_dsc_cmd.xml"
     SECTION RAW = Binaries/star/RawFiles/Panel_nt36860_wqhd_dsc_cmd.xml
@@ -149,101 +104,6 @@
     SECTION RAW = Binaries/star/RawFiles/Panel_secondary_truly_1080p_vid.xml
   }
 
-  FILE FREEFORM = DD862655-95F7-4E46-9AB4-29ED0F3C35C0 {
-    SECTION UI = "Panel_oplus19065_samsung_1440_3168_dsc_cmd.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel_oplus19065_samsung_1440_3168_dsc_cmd.xml
-  }
-
-  FILE FREEFORM = E3F8580A-95F7-4E46-9AB4-29ED0F3F65C8 {
-    SECTION UI = "Panel_oplus20031_samsung_1440_3216_dsc_cmd.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel_oplus20031_samsung_1440_3216_dsc_cmd.xml
-  }
-
-  FILE FREEFORM = AF5F5F8E-45C6-4B94-85B0-7015C2DAC322 {
-    SECTION UI = "Panel_cupid20627_samsung_1080_2400_dsc_cmd.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel_cupid20627_samsung_1080_2400_dsc_cmd.xml
-  }
-
-  FILE FREEFORM = E47D90C9-41A2-42FF-9DF0-43CE22069880 {
-    SECTION UI = "Panel_cupid20627_samsung_1080_2400_dsc_cmd_120hz.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel_cupid20627_samsung_1080_2400_dsc_cmd_120hz.xml
-  }
-
-  FILE FREEFORM = E4F8590A-94F7-4E46-9BB5-29ED0F3F65C0 {
-    SECTION UI = "Panel_oplus20031_samsung_1440_3216_dsc_cmd_evt.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel_oplus20031_samsung_1440_3216_dsc_cmd_evt.xml
-  }
-
-  FILE FREEFORM = DF72B8C9-B7E3-4C9F-8A49-0865E0D31A9D {
-    SECTION UI = "Panel_oplus20031_samsung_1440_3216_dsc_cmd_dvt.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel_oplus20031_samsung_1440_3216_dsc_cmd_dvt.xml
-  }
-
-  FILE FREEFORM = DBD1C9A6-EC5D-4648-8A49-0865E0D31A9D {
-    SECTION UI = "Panel_oplus20031_samsung_1440_3216_dsc_cmd_dvt_id07.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel_oplus20031_samsung_1440_3216_dsc_cmd_dvt_id07.xml
-  }
-
-  FILE FREEFORM = DBD2C9A5-EC5D-4648-7C67-0865E0D31A9D {
-    SECTION UI = "Panel_oplus20031_samsung_1440_3216_dsc_cmd_dvt_id09.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel_oplus20031_samsung_1440_3216_dsc_cmd_dvt_id09.xml
-  }
-
-  FILE FREEFORM = 98A7CEA1-CC8F-49A8-9C3D-A5BCCDB67A89 {
-    SECTION UI = "Panel_oplus20659_samsung_1080_2400_dsc_cmd.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel_oplus20659_samsung_1080_2400_dsc_cmd.xml
-  }
-
-  FILE FREEFORM = 69DDBAB4-A29A-40D9-B7EC-416EF09F2939 {
-    SECTION UI = "Panel_oplus20659_samsung_1080_2400_dsc_cmd_120hz.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel_oplus20659_samsung_1080_2400_dsc_cmd_120hz.xml
-  }
-
-  FILE FREEFORM = B8C3350B-F3F0-40FA-8FD5-A1097D923578 {
-    SECTION UI = "Panel_cupid20627_samsung_1080_2400_dsc_cmd_dvt_120hz.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel_cupid20627_samsung_1080_2400_dsc_cmd_dvt_120hz.xml
-  }
-
-  FILE FREEFORM = 33135CC5-7ED4-4621-B9F7-7487164A433B {
-    SECTION UI = "Panel_oplus21005_boe_nt37701_1080_2400_dsc_cmd_120hz.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel_oplus21005_boe_nt37701_1080_2400_dsc_cmd_120hz.xml
-  }
-
-  FILE FREEFORM = 412C4B45-B647-4F7D-8D59-9E24CC64F5D2 {
-    SECTION UI = "Panel_oplus21005_boe_nt37701_1080_2400_dsc_cmd_evt1_120hz.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel_oplus21005_boe_nt37701_1080_2400_dsc_cmd_evt1_120hz.xml
-  }
-
-  FILE FREEFORM = 94A8F725-6A9E-4EBB-BEFB-0B6997D2014C {
-    SECTION UI = "Panel_oplus21005_boe_nt37701_1080_2400_dsc_cmd_dvt_120hz.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel_oplus21005_boe_nt37701_1080_2400_dsc_cmd_dvt_120hz.xml
-  }
-
-  FILE FREEFORM = B04FD707-6D9A-4F27-8EE5-B4AAFF4092AD {
-    SECTION UI = "Panel_oplus21005_boe_nt37701a_1080_2400_dsc_cmd_120hz.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel_oplus21005_boe_nt37701a_1080_2400_dsc_cmd_120hz.xml
-  }
-
-  FILE FREEFORM = EBD2CEF2-43EB-4BE4-A834-732C8E54B0B1 {
-    SECTION UI = "Panel_oplus21617_samsung_ams662zs01_1080_2400_dvt_dsc_cmd.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel_oplus21617_samsung_ams662zs01_1080_2400_dvt_dsc_cmd.xml
-  }
-
-  FILE FREEFORM = B8561092-DE22-4A8E-84F0-C3B036D2C4DB {
-    SECTION UI = "Panel_oplus21617_samsung_ams662zs01_1080_2400_rev_dsc_cmd.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel_oplus21617_samsung_ams662zs01_1080_2400_rev_dsc_cmd.xml
-  }
-
-  FILE FREEFORM = 98246EA1-CC02-49A8-9C3D-A5BC25867A89 {
-    SECTION UI = "Panel_oplus_20085_boe_nt37701_988_1972_cmd.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel_oplus_20085_boe_nt37701_988_1972_cmd.xml
-  }
-
-  FILE FREEFORM = 98A7CEA1-CC02-49A8-9C3D-A58325867A89 {
-    SECTION UI = "Panel_oplus_20085_samsung_s6e3_1792_1920_dsc_cmd.xml"
-    SECTION RAW = Binaries/star/RawFiles/Panel_oplus_20085_samsung_s6e3_1792_1920_dsc_cmd.xml
-  }
-
   FILE FREEFORM = 13594E78-635E-49C9-80C7-F2A3EF8D959B {
     SECTION UI = "Panel_r66451_60hz_fhd_plus_dsc_cmd_cphy.xml"
     SECTION RAW = Binaries/star/RawFiles/Panel_r66451_60hz_fhd_plus_dsc_cmd_cphy.xml
@@ -268,16 +128,91 @@
     SECTION UI = "Panel_secondary_r66451_fhd_plus_dsc_cmd.xml"
     SECTION RAW = Binaries/star/RawFiles/Panel_secondary_r66451_fhd_plus_dsc_cmd.xml
   }
+
+  FILE FREEFORM = 1DAAE311-3216-4A2F-BB8E-F571356FCFF7 {
+    SECTION UI = "Panel_K2_38_0c_00_amoled_dsc_cmd.xml"
+    SECTION RAW = Binaries/star/RawFiles/Panel_K2_38_0c_00_amoled_dsc_cmd.xml
+  }
+
+  FILE FREEFORM = 446EC982-010E-4F78-837A-DDE75F21C3CA {
+    SECTION UI = "Panel_K2_38_08_0a_amoled_dsc_cmd.xml"
+    SECTION RAW = Binaries/star/RawFiles/Panel_K2_38_08_0a_amoled_dsc_cmd.xml
+  }
+
+  FILE FREEFORM = C5333FD9-52EB-431B-A6B5-BD16B9900AEE {
+    SECTION UI = "Panel_K2_38_08_0a_mp_amoled_dsc_cmd.xml"
+    SECTION RAW = Binaries/star/RawFiles/Panel_K2_38_08_0a_mp_amoled_dsc_cmd.xml
+  }
+
+  FILE FREEFORM = 28A86567-002B-4BC0-9D56-2A08F2654241 {
+    SECTION UI = "Panel_K2B_38_08_0a_amoled_dsc_cmd.xml"
+    SECTION RAW = Binaries/star/RawFiles/Panel_K2B_38_08_0a_amoled_dsc_cmd.xml
+  }
+
+  FILE FREEFORM = CB049ADC-62C3-11EB-96A1-6701D6051FE4 {
+    SECTION UI = "Panel_K3S_42_02_0a_amoled_dsc_cmd.xml"
+    SECTION RAW = Binaries/star/RawFiles/Panel_K3S_42_02_0a_amoled_dsc_cmd.xml
+  }
+
+  FILE FREEFORM = 2FCC8E00-2785-4F64-AF5E-C3910984E8AD {
+    SECTION UI = "Panel_K3S_42_02_0b_amoled_dsc_cmd.xml"
+    SECTION RAW = Binaries/star/RawFiles/Panel_K3S_42_02_0b_amoled_dsc_cmd.xml
+  }
+
+  FILE FREEFORM = 1D9FDF52-2512-434B-98EF-2C84B66687FE {
+    SECTION UI = "Panel_J18_42_06_0a_prim_amoled_dsc_cmd.xml"
+    SECTION RAW = Binaries/star/RawFiles/Panel_J18_42_06_0a_prim_amoled_dsc_cmd.xml
+  }
+
+  FILE FREEFORM = DD12A429-12C3-4532-9C59-447793156926 {
+    SECTION UI = "Panel_J18_42_06_0a_sec_amoled_dsc_cmd.xml"
+    SECTION RAW = Binaries/star/RawFiles/Panel_J18_42_06_0a_sec_amoled_dsc_cmd.xml
+  }
+
+  FILE FREEFORM = 51D1B2EE-BD54-4B0E-9D9A-8C5B81278DD4 {
+    SECTION UI = "Panel_J18s_42_06_0a_prim_amoled_dsc_cmd.xml"
+    SECTION RAW = Binaries/star/RawFiles/Panel_J18s_42_06_0a_prim_amoled_dsc_cmd.xml
+  }
+
+  FILE FREEFORM = CE378F3D-F0A6-4043-AD3D-3B3890CEB677 {
+    SECTION UI = "Panel_J18s_42_06_0a_sec_amoled_dsc_cmd.xml"
+    SECTION RAW = Binaries/star/RawFiles/Panel_J18s_42_06_0a_sec_amoled_dsc_cmd.xml
+  }
+
+  FILE FREEFORM = 9CA836AD-7038-4467-8DA1-0B9151F8DF6E {
+    SECTION UI = "Panel_K1_43_06_00_amoled_cmd.xml"
+    SECTION RAW = Binaries/star/RawFiles/Panel_K1_43_06_00_amoled_cmd.xml
+  }
+
+  FILE FREEFORM = A25CA171-89EF-4E9A-9D68-0DBBB3BF6711 {
+    SECTION UI = "Panel_secondary_sim_vdo_43_06_00.xml"
+    SECTION RAW = Binaries/star/RawFiles/Panel_secondary_sim_vdo_43_06_00.xml
+  }
+
+  FILE FREEFORM = B1B066AA-7EB3-4644-855F-619F7DC96397 {
+    SECTION UI = "Panel_K11_38_08_0a_amoled_dsc_cmd.xml"
+    SECTION RAW = Binaries/star/RawFiles/Panel_K11_38_08_0a_amoled_dsc_cmd.xml
+  }
+
+  FILE FREEFORM = 6FF4EF1B-166B-4D80-B27D-4A31E6D3B298 {
+    SECTION UI = "Panel_K8_42_02_0a_amoled_dsc_cmd.xml"
+    SECTION RAW = Binaries/star/RawFiles/Panel_K8_42_02_0a_amoled_dsc_cmd.xml
+  }
+
+  FILE FREEFORM = 04B59647-A1EF-43DD-96D8-D918AE4FAF41 {
+    SECTION UI = "Panel_primary_sim_vdo.xml"
+    SECTION RAW = Binaries/star/RawFiles/Panel_primary_sim_vdo.xml
+  }
+
+  FILE FREEFORM = 8441538E-ABED-494A-991F-84CCE0D0D0E4 {
+    SECTION UI = "Panel_secondary_sim_vdo.xml"
+    SECTION RAW = Binaries/star/RawFiles/Panel_secondary_sim_vdo.xml
+  }
 !endif
 
   FILE FREEFORM = 21E9BDD9-6C3F-4F10-84A5-BBEC322741F1 {
     SECTION UI = "uefipil.cfg"
     SECTION RAW = Binaries/star/RawFiles/uefipil.cfg
-  }
-
-  FILE FREEFORM = A1E235DE-E825-4591-9623-C43175811826 {
-    SECTION UI = "SecParti.cfg"
-    SECTION RAW = Binaries/star/RawFiles/SecParti.cfg
   }
 
   FILE FREEFORM = 45FE4B7C-150C-45DA-A021-4BEB2048EC6F {
@@ -288,4 +223,9 @@
   FILE FREEFORM = F780C779-DD7C-47CD-BD1A-5EB414C51704 {
     SECTION UI = "BATTERY.PROVISION"
     SECTION RAW = Binaries/star/RawFiles/BATTERY.PROVISION
+  }
+
+  FILE FREEFORM = A1E235DE-E825-4591-9623-C43175811826 {
+    SECTION UI = "SecParti.cfg"
+    SECTION RAW = Binaries/star/RawFiles/SecParti.cfg
   }

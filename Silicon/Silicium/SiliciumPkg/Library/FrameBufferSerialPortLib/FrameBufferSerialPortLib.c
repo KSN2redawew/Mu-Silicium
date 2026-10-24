@@ -183,6 +183,10 @@ WriteFrameBuffer (
       AdvanceNewLine (FbBase, FbLength, CurrentPosition, MaxPosition);
     } else if (Character == '\r') {
       CurrentPosition->XPos = 0;
+    } else if (Character == '\f') {
+      ZeroMem ((VOID *)FbBase, FB_WIDTH * FB_HEIGHT * FB_BPP);
+      CurrentPosition->XPos = 0;
+      CurrentPosition->YPos = 0;
     }
 
     return;

@@ -2653,7 +2653,7 @@
 
 <img align="right" src="Resources/Pictures/Xiaomi-Mi-11-Ultra.png" width="500" alt="Preview">
 
-**State:** Inactive <br>
+**State:** Active <br>
 **Codename:** star
 
 **Contributors:** [KSN](https://github.com/KSN2redawew/)
