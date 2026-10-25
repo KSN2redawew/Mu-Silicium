@@ -92,6 +92,7 @@
   DeviceBootManagerLib|diziPkg/Library/DiziDeviceBootManagerLib/DiziDeviceBootManagerLib.inf
 
 [Components]
+  DiziBootPkg/BootSelector/BootSelector.inf
   #
   # ACPI Tables
   #

@@ -23,6 +23,10 @@
   RfsProtectionLib
 
 [Protocols]
+  gEfiFirmwareVolume2ProtocolGuid
+  gEfiUsb2HcProtocolGuid
+  gEfiPciRootBridgeIoProtocolGuid
+  gEfiPciIoProtocolGuid
   gEfiSimpleTextInProtocolGuid
   gEfiSimpleTextInputExProtocolGuid
 
