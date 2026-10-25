@@ -1,36 +1,36 @@
-# Mu-Silicium — DIZI experimental fork
+# Project Silicium UEFI for ARM64-Based Devices
 
-DIZI-focused UEFI bring-up for **Xiaomi Redmi Pad Pro (SM7435)**, with
-future Android/iPadOS dualboot as a separate target.
+<!-- ![Banner](https://github.com/Project-Silicium/Mu-Silicium/blob/main/Resources/Pictures/Banner.png) -->
 
-**Not a production bootloader, no released dizi firmware yet.**
-The existing upstream devices and binary dependencies remain in Git history
-and the source tree; CI and the public status list now target **dizi only**.
+## Description
 
-- [DIZI hardware status](Status.md)
-- [Build documentation](Building.md)
-- [UEFI diagnostic build workflow](.github/workflows/active_devices.yml)
+This Project focuses on Making ARM-Based Devices Boot Operating Systems like Windows or Linux using Custom UEFI Firmware.
 
-## Build
+## Resources
 
-```sh
-python3 build_uefi.py -d dizi -r DEBUG -c
-```
+- [Status](Status.md)
+- [Building](Building.md)
+- [Guides](https://github.com/Project-Silicium/Guides/blob/main/README.md)
+- [Discord Server](https://discord.gg/Dx2QgMx7Sv)
 
-Or use **Actions → DIZI UEFI diagnostic build → Run workflow**.
+## Frequently asked Questions
 
-The new build evaluates DIZI's key mapping:
-- Volume Up uses **PM6450 SPMI GPIO1**, active low.
-- Power and resin use **PMK8350 PON/SPMI**.
-- A DIZI-only BDS library now attempts to register already-existing EFI key
-  protocol handles in `ConIn` before the boot menu. This is an experimental
-  console discovery fix, not a replacement PMIC button driver.
-- Firmware binaries are **not** guaranteed to have Redmi Pad Pro-specific
-  key mappings. The preflight is static, not hardware confirmation.
+### **Is my Device Supported in this Project?**
+- To Check if your Device is Supported, Take a Look at the Status Page Referenced in the Section Above.
 
-Do not flash experimental UEFI; check Power/Volume input and recovery via a
-reversible boot method first. Do not treat a passing CI build as evidence
-that USB host, PD, Linux/Windows, storage, or dualboot work.
+### **What do I do if my Device isn't Supported in this Project?**
+- We made some Guides that Explain How to Port your Device that are Referenced in the Section Above.
 
-Upstream: [Project Silicium](https://github.com/Project-Silicium/Mu-Silicium).
-Code and licensing remain governed by [LICENSE](LICENSE).
+## Credits
+
+[Microsoft](https://github.com/microsoft/) for their [Project Mu](https://microsoft.github.io/mu/) which Powers this Project. <br>
+[WOA-Project](https://github.com/WOA-Project/) for their [mu_andromeda_platforms](https://github.com/WOA-Project/mu_andromeda_platforms/) which is used as Base for this Project. <br>
+[Project Aloha](https://github.com/Project-Aloha/) for their [mu_aloha_platforms](https://github.com/Project-Aloha/mu_aloha_platforms/) which is used as Reference for some SoCs. <br>
+[Open Surface RT](https://openrt.gitbook.io/open-surfacert/) for their Help on Tegra Related Stuff.
+
+[sonic011gamer](https://github.com/sonic011gamer/) and [halal-beef](https://github.com/halal-beef/) for their Amazing Work on Exynos Related Stuff.
+
+## License
+
+All code except drivers in `GPLDrivers` & `GPLApplications` & `GPLLibrary` directories are licensed under BSD-2-Clause. <br />
+GPL Drivers are licensed under `GPLv2` or later license.
