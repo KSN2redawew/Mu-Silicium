@@ -86,6 +86,8 @@ READ_LOCK_STATUS   = TRUE
   #  SECTION UI = "DeviceTreeBlob"
   #}
 
+  INF DiziBootPkg/BootSelector/BootSelector.inf
+
   !include QcomPkg/Extra.fdf.inc
 
 [FV.FVMAIN_COMPACT]

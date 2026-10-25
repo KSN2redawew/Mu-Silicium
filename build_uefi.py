@@ -428,6 +428,11 @@ def main ():
 
     # Parse Script Arguments
     ctx = parse_arguments ()
+    # This fork is dizi-only. Keep historical platforms in git for rollback,
+    # but never accidentally compile/ship them as part of a DIZI release.
+    if ctx.device != "dizi":
+        logger.error ('This fork builds only Xiaomi Redmi Pad Pro (dizi); got "%s".', ctx.device)
+        sys.exit (2)
 
     # Get Device Package Path
     device_package_path = get_device_package_path (ctx.device)

@@ -61,7 +61,6 @@
 !if $(USE_CUSTOM_DISPLAY_DRIVER) == 1
   INF Binaries/dizi/QcomPkg/Drivers/CPRDxe/CPRDxe.inf
 !endif
-  INF Binaries/dizi/QcomPkg/Drivers/GpiDxe/GpiDxe.inf
   INF Binaries/dizi/QcomPkg/Drivers/SPIDxe/SPIDxe.inf
   INF Binaries/dizi/QcomPkg/Drivers/SdccDxe/SdccDxe.inf
   INF Binaries/dizi/QcomPkg/Drivers/FeatureEnablerDxe/FeatureEnablerDxe.inf
@@ -72,9 +71,16 @@
   INF SiliciumPkg/Drivers/SimpleFbDxe/SimpleFbDxe.inf
 !endif
 
+  # PM6450 Volume Up is GPIO-controlled: initialize GpiDxe first.
+  # PM6450/PMK8350 key services must precede ButtonsDxe.
+  # BLACK-SCREEN ISOLATION: SPMIDxe and PmicDxeLa are intentionally
+  # excluded from both APRIORI and normal DXE, after repeated all-black
+  # hardware boots. Do not silently reinstate them for button tests.
+  # ButtonsDxe may remain nonfunctional without their protocols.
+  INF Binaries/dizi/QcomPkg/Drivers/PmicGlinkDxe/PmicGlinkDxe.inf
+  INF Binaries/dizi/QcomPkg/Drivers/GpiDxe/GpiDxe.inf
   INF Binaries/dizi/QcomPkg/Drivers/ButtonsDxe/ButtonsDxe.inf
   INF Binaries/dizi/QcomPkg/Drivers/ChargerExDxe/ChargerExDxe.inf
-  INF Binaries/dizi/QcomPkg/Drivers/PmicGlinkDxe/PmicGlinkDxe.inf
   INF Binaries/dizi/QcomPkg/Drivers/QcomChargerDxe/QcomChargerDxeLA.inf
   INF Binaries/dizi/QcomPkg/Drivers/UsbPwrCtrlDxe/UsbPwrCtrlDxe.inf
   INF Binaries/dizi/QcomPkg/Drivers/TsensDxe/TsensDxe.inf

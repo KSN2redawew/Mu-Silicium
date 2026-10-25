@@ -1,0 +1,35 @@
+[Defines]
+  INF_VERSION                    = 0x00010005
+  BASE_NAME                      = DiziDeviceBootManagerLib
+  FILE_GUID                      = 2DE36F6A-263C-4DA3-9582-958B1C0A64BC
+  MODULE_TYPE                    = DXE_DRIVER
+  VERSION_STRING                 = 1.0
+  LIBRARY_CLASS                  = DeviceBootManagerLib|DXE_DRIVER
+
+[Sources]
+  DiziBootManager.c
+
+[Packages]
+  MdePkg/MdePkg.dec
+  MdeModulePkg/MdeModulePkg.dec
+  MsCorePkg/MsCorePkg.dec
+  QcomPkg/QcomPkg.dec
+
+[LibraryClasses]
+  DebugLib
+  UefiBootServicesTableLib
+  UefiBootManagerLib
+  DevicePathLib
+  RfsProtectionLib
+
+[Protocols]
+  gEfiFirmwareVolume2ProtocolGuid
+  gEfiUsb2HcProtocolGuid
+  gEfiPciRootBridgeIoProtocolGuid
+  gEfiPciIoProtocolGuid
+  gEfiSimpleTextInProtocolGuid
+  gEfiSimpleTextInputExProtocolGuid
+
+[Guids]
+  gUsbControllerInitGuid
+  gSdCardInitGuid
