@@ -1,66 +1,105 @@
-name: DIZI UEFI diagnostic build
-# Manual and same-repository PR only: NEVER auto-release unverified firmware.
+name: DIZI native EDK2 / Ubuntu
+# Reuse the repository's existing workflow. Build ONLY Redmi Pad Pro (dizi).
+# This experimental branch builds after changes; main stays manual-only after merge.
 on:
-  workflow_dispatch:
-  pull_request:
+  push:
+    branches:
+      - dizi/native-pmic-buttons-20261025
     paths:
+      - "Platforms/Xiaomi/DiziBootPkg/**"
       - "Platforms/Xiaomi/diziPkg/**"
-      - "Resources/Configs/dizi.toml"
-      - "Resources/DTBs/dizi.dts"
-      - "Silicon/Qualcomm/QcomPkg/Library/PlatformBootManagerLib/**"
-      - "tools/dizi_buttons_preflight.py"
-      - "tests/test_dizi_buttons_preflight.py"
-      - ".github/workflows/active_devices.yml"
+      - "tools/test_dizi_native_integration.py"
+      - "tools/verify_dizi_native_fv.py"
+      - "tools/verify_dizi_fd_boot_pair.py"
       - "build_uefi.py"
+      - "build_active_devices.sh"
+      - ".github/workflows/active_devices.yml"
+  workflow_dispatch:
+
 permissions:
   contents: read
-concurrency:
-  group: dizi-uefi-${{ github.ref }}
-  cancel-in-progress: true
-jobs:
-  preflight:
-    runs-on: ubuntu-24.04
-    timeout-minutes: 8
-    steps:
-      - uses: actions/checkout@v4
-      - name: Run DIZI button-wiring tests without firmware access
-        run: |
-          python3 -m py_compile tools/dizi_buttons_preflight.py
-          python3 -m unittest discover -s tests -p 'test_dizi_buttons_preflight.py' -v
-          python3 tools/dizi_buttons_preflight.py --json-out dizi-buttons-static.json
-      - uses: actions/upload-artifact@v4
-        with:
-          name: dizi-buttons-static-report
-          path: dizi-buttons-static.json
-          retention-days: 14
 
-  build-dizi:
-    needs: preflight
-    # Firmware binaries/submodule must be treated as device-matched, not
-    # as proof any physical key or USB PD function actually works.
+concurrency:
+  group: dizi-native-ubuntu-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  dizi:
+    name: Build native DIZI on GitHub-hosted Ubuntu 24.04
     runs-on: ubuntu-24.04
     timeout-minutes: 120
     env:
-      # Avoid a runner-wide apt full-upgrade in setup_env.sh.
       CI_BUILD: "false"
+      CLANGPDB_AARCH64_PREFIX: aarch64-linux-gnu-
+    defaults:
+      run:
+        shell: bash
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout native Mu-Silicium with binary submodules
+        uses: actions/checkout@v4
         with:
           submodules: recursive
-      - name: Install DIZI toolchain and pinned submodules
-        run: bash ./setup_env.sh -p apt
-      - name: Verify selected patched ButtonsDxe binary
+          persist-credentials: false
+
+      - name: Install Ubuntu/EDK2 build dependencies
         run: |
-          python3 tools/dizi_buttons_preflight.py --require-binary \
-            --json-out dizi-buttons-with-binary.json
-      - name: Build only dizi (DEBUG)
-        run: python3 build_uefi.py -d dizi -r DEBUG -c
-      - name: Upload experimental UEFI image
+          set -euo pipefail
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            build-essential clang llvm lld mono-devel nasm \
+            gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu \
+            uuid-dev gettext git python3 python3-pip python3-venv pkg-config
+          for bin in git clang llvm-lib lld-link nasm mono make aarch64-linux-gnu-gcc python3; do
+            command -v "$bin" >/dev/null || { echo "::error::Missing $bin"; exit 1; }
+          done
+          python3 -m venv .venv
+          .venv/bin/python -m pip install --disable-pip-version-check -r pip-requirements.txt
+
+      - name: Verify native dizi integration and PMIC safety
+        run: |
+          set -euo pipefail
+          python3 -m unittest discover -s tools -p 'test_dizi_native_integration.py' -v
+          python3 -m py_compile tools/verify_dizi_native_fv.py tools/verify_dizi_fd_boot_pair.py
+          test -f Platforms/Xiaomi/DiziBootPkg/BootSelector/DiziSpmiArbRead.c
+
+      - name: Build DIZI RELEASE without external overlays
+        run: |
+          set -euo pipefail
+          source .venv/bin/activate
+          python3 build_uefi.py -d dizi -r RELEASE -c 2>&1 | tee dizi-native-build.log
+          test -s Mu-dizi.img
+          test -s Build/diziPkg/RELEASE_CLANGPDB/FV/SILICIUM_UEFI.fd
+
+      - name: Verify boot-v4 image, embedded AArch64 selector and paired FD
+        run: |
+          set -euo pipefail
+          mkdir -p dist
+          boot="dist/Mu-dizi-R4-native-${GITHUB_RUN_ID}.img"
+          fd="dist/SILICIUM_UEFI-dizi-R4-native-${GITHUB_RUN_ID}.fd"
+          cp Mu-dizi.img "$boot"
+          cp Build/diziPkg/RELEASE_CLANGPDB/FV/SILICIUM_UEFI.fd "$fd"
+          python3 tools/verify_dizi_fd_boot_pair.py "$boot" "$fd" --report dist/FD_MATCH.json
+          python3 tools/verify_dizi_native_fv.py "$boot" \
+            --require-selector-string R4-MU-NATIVE \
+            --report dist/SELECTOR_FV.json
+          (cd dist && sha256sum *.img *.fd > SHA256SUMS.txt)
+          printf 'Experimental firmware for Redmi Pad Pro (dizi).\nBuild: %s\nSource SHA: %s\nTest ONLY: fastboot boot Mu-dizi-R4-native-%s.img\nNEVER fastboot flash. Power/Volume Down GEN3 changes require physical validation. Android/XNU EFI loaders are unavailable.\n' \
+            "$GITHUB_RUN_ID" "$GITHUB_SHA" "$GITHUB_RUN_ID" > dist/README-DO-NOT-FLASH.txt
+
+      - name: Attach build error details to job
+        if: failure()
+        run: |
+          mkdir -p dist
+          if [ -f dizi-native-build.log ]; then
+            grep -Ein 'error:|fatal error|FAILED|Traceback' dizi-native-build.log | tail -n 150 > dist/BUILD_ERRORS.txt || true
+          fi
+
+      - name: Upload verified artifacts from hosted runner
+        # Do not mask artifact storage quota errors: without upload there
+        # would be no downloadable image on a disposable hosted runner.
         uses: actions/upload-artifact@v4
         with:
-          name: dizi-UEFI-INPUT-EXPERIMENTAL-NOT-RELEASE
-          path: |
-            Mu-dizi*.img
-            dizi-buttons-with-binary.json
+          name: dizi-native-r4-${{ github.run_id }}
+          path: dist/
           if-no-files-found: error
-          retention-days: 14
+          retention-days: 7
