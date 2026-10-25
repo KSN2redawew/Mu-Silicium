@@ -45,10 +45,10 @@
   gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiACPIReclaimMemory|0
   gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiACPIMemoryNVS|0
   gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiReservedMemoryType|0
-  gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiRuntimeServicesData|300
-  gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiRuntimeServicesCode|150
-  gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiBootServicesCode|1000
-  gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiBootServicesData|800
+  gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiRuntimeServicesData|1000
+  gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiRuntimeServicesCode|600
+  gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiBootServicesCode|4000
+  gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiBootServicesData|4000
   gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiLoaderCode|10
   gEmbeddedTokenSpaceGuid.PcdMemoryTypeEfiLoaderData|0
 
@@ -506,3 +506,6 @@
   #
   MdeModulePkg/Application/BootManagerMenuApp/BootManagerMenuApp.inf
   SiliciumPkg/Applications/UFPLoader/UFPLoader.inf
+  SiliciumPkg/Applications/IosLoader/IosLoader.inf
+
+
